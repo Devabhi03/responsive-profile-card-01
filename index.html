@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Interactive Profile Card</title>
+    
+</head>
+<body>
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-image"></div>
+        </div>
+        <div class="profile-content">
+            <h1 class="profile-name">Abhinandan Kesarwani</h1>
+            <h2 class="profile-title">Software Developer</h2>
+            <p class="profile-bio">Passionate about creating beautiful, user-friendly interfaces with clean code.</p>
+            
+            <a href="mailto:abhike079@gmail.com" class="contact-btn">Contact</a>
+            
+            <div class="toggle-section">
+                <span class="toggle-label">More Details</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="details-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            
+            <div class="additional-details" id="additional-details">
+                <div class="detail-item">
+                    <span class="detail-icon">✉</span>
+                    <span>abhinandan@example.com</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📍</span>
+                    <span>Noida, India</span>
+                </div>
+            
+            </div>
+            
+            <div class="theme-selector">
+                <label for="theme-select" class="theme-label">Theme:</label>
+                <select id="theme-select" class="theme-dropdown">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const detailsToggle = document.getElementById('details-toggle');
+        const additionalDetails = document.getElementById('additional-details');
+        const themeSelect = document.getElementById('theme-select');
+        const body = document.body;
+
+        // Toggle additional details
+        detailsToggle.addEventListener('change', function() {
+            if (this.checked) {
+                additionalDetails.classList.add('show');
+            } else {
+                additionalDetails.classList.remove('show');
+            }
+        });
+
+        // Theme switcher functionality
+        themeSelect.addEventListener('change', function() {
+            if (this.value === 'dark') {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
+            
+            // Add animation class for theme transition
+            body.classList.add('theme-transition');
+            setTimeout(() => {
+                body.classList.remove('theme-transition');
+            }, 300);
+        });
+
+        // Contact button click handler
+        const contactBtn = document.querySelector('.contact-btn');
+        contactBtn.addEventListener('click', function() {
+            alert('Thanks for reaching out! You can email me at abhinandan@example.com');
+        });
+    </script>
+</body>
+</html>
